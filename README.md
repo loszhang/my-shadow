@@ -73,6 +73,20 @@
    - 如果看到 `Match domain: ...` 说明脚本已运行。
    - 如果看到 `Modifying header: ...` 说明 Header 替换成功。
 
+## 7. 终极排查指南 (如果以上都不行)
+如果脚本在 Proxyman 生效，但在小火箭/Surge 不生效，通常只有两个原因：
+
+### 原因一：HTTPS 解密 (MITM) 没开成功
+这是最常见的原因。
+1. **证书没信任**：去 iOS 设置 -> 通用 -> 关于本机 -> 证书信任设置 -> 开启 Shadowrocket 的证书。
+2. **域名没加**：在 Shadowrocket -> 配置 -> HTTPS 解密 -> 必须把 `candytallymovie.vip` 加进去。
+   - 建议加上 `*.candytallymovie.vip` 以防万一。
+
+### 原因二：使用原生 Header Rewrite (推荐尝试)
+如果 JS 脚本一直有问题，可以使用小火箭支持的 Surge 格式的原生重写，不走 JS，性能更好且更稳定。
+请导入 `candytallymovie_surge.sgmodule` 文件试试。
+这个模块使用了 `[Header Rewrite]` 字段，直接由内核处理替换，不经过 JS 引擎。
+
 ## 6. Proxyman 用户指南 (macOS/iOS)
 如果你使用 Proxyman 进行抓包或重写，请使用 `proxyman-script.js` 文件。
 

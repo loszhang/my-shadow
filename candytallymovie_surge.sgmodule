@@ -1,0 +1,17 @@
+#!name=Header Rewrite (Surge/Loon)
+#!desc=Header Rewrite for candytallymovie.vip
+#!system=ios
+
+[Header Rewrite]
+# 直接使用 Surge 原生的 Header Rewrite 功能，不依赖 JS 脚本
+# 语法：域名 匹配字段 替换字段 值
+# 如果是修改 User-Agent
+^https?://.*candytallymovie\.vip header-replace User-Agent "SenPlayer/5.8.5"
+
+# 如果是添加/修改自定义 Header (X-Emby-Authorization)
+# Surge 的 header-replace 可能只对标准 header 有效，对于自定义 header，通常使用 header-add 或 header-del
+^https?://.*candytallymovie\.vip header-del X-Emby-Authorization
+^https?://.*candytallymovie\.vip header-add X-Emby-Authorization 'MediaBrowser Token="", UserId="22F53B42-3ECA-4B1B-8A49-FC6AD0D36615", Client="SenPlayer", Device="iPhone", DeviceId="ACE6164A-B753-425F-9B39-BB178E09BAC1", Version="5.8.5"'
+
+[MITM]
+hostname = %APPEND% *.candytallymovie.vip, candytallymovie.vip
