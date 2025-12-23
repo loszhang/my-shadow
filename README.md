@@ -62,6 +62,26 @@
    - **需要正文**: `关闭` (false)
 5. 点击保存。
 
-## 4. 常见问题
-- **HTTPS 解密**: 必须在 **配置** -> **HTTPS 解密** 中开启，并且生成/安装/信任 CA 证书，否则脚本无法拦截 HTTPS 请求的 Header。
-- **脚本不生效**: 检查 **URL正则** 是否匹配，或者查看小火箭的 **日志** (设置 -> 日志 -> 开启) 里的报错信息。
+## 4. 如何调试 (查看日志)
+如果脚本似乎没有生效，可以通过小火箭的日志功能进行调试。
+
+1. 打开 Shadowrocket -> **设置** (Settings)。
+2. 找到 **日志** (Log) 选项。
+3. 开启 **启用日志** (Enable Log)。
+4. 访问目标网站 `candytallymovie.vip`。
+5. 回到日志页面，查看是否有 `[Header Rewrite]` 开头的日志输出。
+   - 如果看到 `Match domain: ...` 说明脚本已运行。
+   - 如果看到 `Modifying header: ...` 说明 Header 替换成功。
+
+## 6. Proxyman 用户指南 (macOS/iOS)
+如果你使用 Proxyman 进行抓包或重写，请使用 `proxyman-script.js` 文件。
+
+### 使用步骤
+1. 打开 Proxyman。
+2. 点击顶部菜单 **Scripting** -> **Script List**。
+3. 点击左下角 **+** 号新建脚本。
+4. **Name**: 随便填，例如 `CandyTally Rewrite`。
+5. **Rules**: 点击 **+** 添加规则 -> 选择 **URL Contains** -> 填入 `candytallymovie.vip`。
+6. **Script**: 删除编辑器里的默认代码，将 `proxyman-script.js` 的内容完整复制粘贴进去。
+7. 保存并启用 (勾选 Enable)。
+8. 确保 Proxyman 的 **SSL Proxying** 已经开启，并且该域名在 Include List 中。

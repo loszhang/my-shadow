@@ -7,4 +7,4 @@
 # 注意：如果你使用 GitHub 托管，通常直接写文件名即可（Shadowrocket 会自动拼接 URL）。
 # 如果脚本无法加载，请将 script-path 替换为完整的 GitHub Raw 链接，例如：
 # script-path=https://raw.githubusercontent.com/用户名/仓库名/main/candytallymovie.vip.js
-Header Rewrite = type=http-request, pattern=candytallymovie.vip, script-path=candytallymovie.vip.js, requires-body=false
+Header Rewrite = type=http-request, pattern=^http, script-path=candytallymovie.vip.js, requires-body=false
