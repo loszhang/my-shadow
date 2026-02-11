@@ -11,7 +11,9 @@
 # 如果是添加/修改自定义 Header (X-Emby-Authorization)
 # Surge 的 header-replace 可能只对标准 header 有效，对于自定义 header，通常使用 header-add 或 header-del
 ^https?://.*candytallymovie\.vip header-del X-Emby-Authorization
-^https?://.*candytallymovie\.vip header-add X-Emby-Authorization 'MediaBrowser Token="", UserId="04F1CE9B-3437-4406-9AD8-01C79A59C2CE", Client="Filebar", Device="iPhone", DeviceId="0D8371E5-5128-4226-9B1A-2F596D2D8311", Version="1.4.6"'
+^https?://.*candytallymovie\.vip header-add X-Emby-Authorization 'MediaBrowser Token="ffd1ee0a35024be7a7436b9a2c0de38d", UserId="04F1CE9B-3437-4406-9AD8-01C79A59C2CE", Client="Filebar", Device="iPhone", DeviceId="0D8371E5-5128-4226-9B1A-2F596D2D8311", Version="1.4.6"'
+^https?://.*candytallymovie\.vip header-del X-Emby-Token
+^https?://.*candytallymovie\.vip header-add X-Emby-Token "ffd1ee0a35024be7a7436b9a2c0de38d"
 
 [MITM]
 hostname = %APPEND% *.candytallymovie.vip, candytallymovie.vip
